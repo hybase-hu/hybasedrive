@@ -1,0 +1,66 @@
+{% extends 'includes/base.html' %}
+{% block title %} | My Files{% endblock title %}
+{% block content %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+    <div class="card bg-primary-dark text-light" >
+        <div class="card-header text-small">{{file.filename | truncatechars:25}} [{{file.get_extension}}]</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <img class="cover" src="{{file.file_type_image}}" alt="">
+                </div>
+                <div class="col-8">
+                    <p class="small"><span class="text-wrap badge bg-primary"> Description:</span> {{file.description}}</p>
+                    <p class="small"><span class="text-wrap badge bg-primary"> Upload Time:</span> {{file.created_at | timesince}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-header text-end">
+            <a href="{% url 'delete_file' file.pk %}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+            <a href="{% url 'download_file' file.pk %}" class="btn btn-primary"><i class="bi bi-download"></i></a>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6 col-lg-7">
+            <div class="card bg-primary-dark text-light mt-3" >
+                <div class="card-header">Add new shared permission for user</div>
+                <div class="card-body">
+                    <form action="{% url 'permission:add_permission' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <input type="hidden" name="file_pk" id="file_pk" value="{{file.pk}}">
+                            <div class="col-md-8"><input type="text" class="form-control" name="username" placeholder="Add the username"></div>
+                            <div class="col-md-4"><button type="submit" class="btn btn-success w-100"><i class="bi bi-floppy"></i></button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-5">
+            <div class="card bg-primary-dark text-light mt-3" >
+                <div class="card-header">This file is shared with these users</div>
+                <div class="card-body">
+                    {% for perm in file.all_permissions.all %}
+                    <div class="row">
+                        <div class="col-2"><a href="{% url 'permission:delete_permission' file.pk perm.user.pk %}" class=""><i class="bi bi-archive text-danger"></i></a></div>
+                        <div class="col-10"> <h5>{{perm.user.username}} </h5></div>
+                    </div>
+                    {% empty %}
+                    <div class="alert alert-success">This file has not been shared with anyone yet</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock content %}

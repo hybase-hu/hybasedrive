@@ -1,0 +1,28 @@
+
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %} LOGIN {% endblock title %}
+{% block content %}
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="card bg-primary-dark text-light" style="max-width:600px;margin:0px auto">
+        <div class="p-3" style="margin:0px auto">
+            <img src="{% static 'media/ico.jpg' %}" alt="" style="max-width:150px;object-fit:cover;">
+        </div>
+        <div class="card-body">
+            <h5 class="text-center">HybaseDrive</h5>
+            <p class="small text-center">The future files share drive</p>
+            <input type="text" placeholder="Username" name="username" class="form-control mb-3">
+            <input type="password" placeholder="Password" name="password" class="form-control mb-3">
+            <input type="submit" name="" id="" value="Login" class="btn btn-success w-100">
+            <hr>
+            <p class="text-center small">You not have account?</p>
+            <p class="text-center small"><a href="">Registration</a></p>
+        </div>
+    </div>
+</form>
+
+
+{% endblock content %}

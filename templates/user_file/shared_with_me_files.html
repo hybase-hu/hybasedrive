@@ -1,0 +1,38 @@
+{% extends 'includes/base.html' %}
+{% block title %} | My Files{% endblock title %}
+{% block content %}
+
+<div class="container" >
+    <div class="row">
+        {% for shared_file in shared_with_me_files %}
+            <div class="col-sm-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch" >
+                <div class="card bg-primary-dark text-light" >
+                    <div class="card-header text-small">{{shared_file.file.filename | truncatechars:25}} [{{shared_file.file.get_extension}}]</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="cover" src="{{shared_file.file.file_type_image}}" alt="">
+                            </div>
+                            <div class="col-8">
+                                <p class="small"><span class="text-wrap badge bg-primary"> Description:</span> {{shared_file.file.description}}</p>
+                                <p class="small"><span class="text-wrap badge bg-primary"> Upload Time:</span> {{shared_file.file.created_at | timesince}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-end">
+                        <span class="badge bg-dark text-light">Owner: {{shared_file.file.owner}}</span>
+                        <a href="{% url 'download_file' shared_file.file.pk %}" class="btn btn-primary"><i class="bi bi-download"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        {% empty %}
+            <h3 class="alert bg-success text-center">
+                No files have been shared with you yet
+            </h3>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}

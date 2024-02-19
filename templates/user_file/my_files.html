@@ -1,0 +1,40 @@
+{% extends 'includes/base.html' %}
+{% block title %} | My Files{% endblock title %}
+{% block content %}
+
+<div class="container" >
+    <div class="row">
+        {% for file in my_files %}
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-3 d-flex align-items-stretch" >
+                <div class="card bg-primary-dark text-light" >
+                    <div class="card-header text-small">{{file.filename | truncatechars:25}} [{{file.get_extension}}]</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="cover" src="{{file.file_type_image}}" alt="">
+                            </div>
+                            <div class="col-8">
+                                <p class="small"><span class="text-wrap badge bg-primary"> Description:</span> {{file.description}}</p>
+                                <p class="small"><span class="text-wrap badge bg-primary"> Upload Time:</span> {{file.created_at | timesince}}</p>
+                                <p class="small"><span class="text-wrap badge bg-primary"> Share with</span> {{file.all_permissions.all.count}} users </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-end">
+                        <a href="{% url 'delete_file' file.pk %}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                        <a href="{% url 'view_file' file.pk %}" class="btn btn-secondary"><i class="bi bi-eye"></i></a>
+                        <a href="{% url 'download_file' file.pk %}" class="btn btn-primary"><i class="bi bi-download"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        {% empty %}
+            <h3 class="alert bg-success text-center">
+                Not have uploaded file <p class="text-center"><a href="{% url 'upload_files' %}" class="text-warning small">Upload Files</a></p>
+            </h3>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}

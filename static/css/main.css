@@ -1,0 +1,68 @@
+:root {
+    --primary-dark:#121212;
+    --secondary-dark:#171716;
+    --main-dark:#121514;
+    --primary-light:#CCC;
+    --secondary-light:#FCAE1E;
+}
+body {
+    background-color:var(--secondary-dark);
+    height:100vh;
+    color:var(--primary-light) !important;
+}
+
+.nav-href {
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+    color:var(--primary-light);
+}
+.nav-href:hover{
+    color:var(--secondary-light);
+}
+
+.bg-primary-dark {
+    background-color:var(--primary-dark) !important;
+}
+.bg-secondary-dark {
+    background-color:var(--secondary-dark) !important;
+}
+.bg-main-dark {
+    background-color:var(--main-dark) !important;
+}
+.little-font {
+    font-size:10px;
+}
+
+
+.active {
+    color: var(--secondary-light) !important;
+}
+
+
+.cover {
+    width:100%;
+    height:auto;
+    object-fit:cover;
+}
+.text-small {
+    font-size:12px;
+}
+
+@keyframes show-toast {
+    0% {bottom:-100px}
+    20% {bottom:50px}
+    80% {bottom:50px}
+    100% {bottom:-100%}
+}
+
+
+.show-notification {
+
+    position:fixed !important;
+    bottom:20px;
+    right:20px;
+    animation-name:show-toast;
+    animation-duration:7s;
+    animation-fill-mode: forwards;
+}

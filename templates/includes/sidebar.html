@@ -1,0 +1,36 @@
+{% load static %}
+<hr class="mx-2">
+<ul class="list-group">
+
+  <li class="list-group-item border-0 bg-primary-dark text-light rounded-0">
+    <a href="{% url 'index' %}" class="nav-href {% if '/' == request.path %}active{% endif %}">
+      <span class="d-lg-none"><i class="bi bi-person-circle"></i></span>
+    </a>
+    <a href="{% url 'index' %}" class="nav-href d-none d-lg-inline {% if '/' == request.path %}active{% endif %}"><i class="bi bi-person-circle"></i>&nbsp Profile</a>
+  </li>
+
+  <li class="list-group-item border-0 bg-primary-dark text-light rounded-0">
+    <a href="{% url 'upload_files' %}" class="nav-href {% if 'upload' in request.path %}active{% endif %}">
+      <span class="d-lg-none"><i class="bi bi-plus-circle"></i></span>
+    </a>
+    <a href="{% url 'upload_files' %}" class="nav-href d-none d-lg-inline {% if 'upload' in request.path %}active{% endif %}"><i class="bi bi-plus-circle "></i>&nbsp Upload Files</a>
+  </li>
+
+  <li class="list-group-item border-0 bg-primary-dark text-light rounded-0">
+    <a href="{% url 'my_files' %}" class="nav-href {% if 'my_files' in request.path %}active{% endif %}">
+      <span class="d-lg-none"><i class="bi bi-list-ol"></i></span>
+    </a>
+    <a href="{% url 'my_files' %}" class="nav-href d-none d-lg-inline {% if 'my_files' in request.path %}active{% endif %}"><i class="bi bi-list-ol }"></i>&nbsp My Files</a>
+  </li>
+
+
+  <li class="list-group-item border-0 bg-primary-dark text-light rounded-0">
+    <a href="{% url 'list_shared_with_me_files' %}" class="nav-href {% if 'shared_with_me' in request.path %}active{% endif %}">
+      <span class="d-lg-none"><i class="bi bi-share"></i></span>
+    </a>
+    <a href="{% url 'list_shared_with_me_files' %}" class="nav-href d-none d-lg-inline {% if 'shared_with_me' in request.path %}active{% endif %}"><i class="bi bi-share "></i>&nbsp Shared with me</a>
+  </li>
+
+
+</ul>
+<hr class="mx-2">

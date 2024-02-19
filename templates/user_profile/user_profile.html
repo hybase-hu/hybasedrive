@@ -1,0 +1,25 @@
+{% extends 'includes/base.html' %}
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-lg-3 ">
+            <div class="card bg-primary-dark text-light" >
+                <img class="card-img" src="{{user_profile.profile_picture.url}}">
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="card bg-primary-dark text-light" >
+                <div class="card-body">
+                    <p><span class="badge bg-primary text-light">Quota</span> {{user_profile.get_quota_display }} <a href="" class="text-danger link-offset-2 link-underline link-underline-opacity-0">Get premium</a></p>
+                    <p><span class="badge bg-primary text-light">Space Available</span> {{user_profile.is_space_available|filesizeformat}}</p>
+                    <p><span class="badge bg-primary text-light">Uploaded Files</span> {{user_profile.user.my_files.all.count}} files</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

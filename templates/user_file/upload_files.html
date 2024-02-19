@@ -1,0 +1,21 @@
+{% extends 'includes/base.html' %}
+{% block title %} | Upload Files{% endblock title %}
+{% block content %}
+
+<div class="container" >
+    <div class="card bg-primary-dark text-light">
+        <form action="" method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-header">Upload Files</div>
+            <div class="card-body">
+                <input type="file" multiple name="upload_files" class="form-control bg-dark text-light my-2">
+                {{form.description}}
+                <input type="submit" class="btn btn-success w-100 my-3" value="Upload">
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock content %}

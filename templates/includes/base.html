@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HybaseDrive {% block title%}{%endblock title%}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'media/ico.jpg' %}">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+
+</head>
+
+
+
+<body>
+{% include 'includes/navbar.html' %}
+<div class="container-fluid h-100">
+    <div class="row" style="min-height:100vh;">
+        <div class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 bg-primary-dark">{% include 'includes/sidebar.html' %}</div>
+        <div class="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 mt-5" >
+            {% block content %} {% endblock content %}
+        </div>
+    </div>
+    {% include 'includes/footer.html' %}
+
+</div>
+
+{% include 'includes/alert.html' %}
+</body>
+
+
+
+
+</html>
