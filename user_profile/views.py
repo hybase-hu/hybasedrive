@@ -17,6 +17,13 @@ def index(request):
     return render(request, 'user_profile/user_profile.html', context)
 
 
+@login_required(login_url="login")
+def logout(request):
+
+    logout(request)
+    return redirect("login")
+
+
 def login(request):
     if request.method == 'POST':
         username = request.POST['username'].lower()

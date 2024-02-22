@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user_profile.urls'), name='user_profile'),
     path('permission/', include('file_permission.urls'), name='permission'),
-    path('login/', login, name='login')
+    path('login/', login, name='login'),
+    path('logout/', logout, name='logout')
 
 ]
 urlpatterns += static(settings.STATIC_URL)
