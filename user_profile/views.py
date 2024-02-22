@@ -1,4 +1,5 @@
 from django.contrib import auth, messages
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
@@ -18,10 +19,10 @@ def index(request):
 
 
 @login_required(login_url="login")
-def logout(request):
+def logout_user(request):
 
     logout(request)
-    return redirect("login")
+    return redirect("index")
 
 
 def login(request):

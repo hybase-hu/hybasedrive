@@ -20,14 +20,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 from hybasedrive import settings
-from user_profile.views import login, logout
+from user_profile.views import login,  logout_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user_profile.urls'), name='user_profile'),
     path('permission/', include('file_permission.urls'), name='permission'),
     path('login/', login, name='login'),
-    path('logout/', logout, name='logout')
+    path('logout/', logout_user, name='logout')
 
 ]
 urlpatterns += static(settings.STATIC_URL)
