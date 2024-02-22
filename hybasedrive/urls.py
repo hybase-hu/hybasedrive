@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from hybasedrive import settings
-from user_profile.views import login
+from user_profile.views import login, logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
