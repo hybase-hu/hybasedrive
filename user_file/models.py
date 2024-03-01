@@ -38,6 +38,8 @@ class UploadFile(models.Model):
             return "/static/media/file_icons/doc.png"
         elif extension == ".pdf":
             return "/static/media/file_icons/pdf.png"
+        elif extension == ".zip" or extension == ".rar" or extension == ".7z":
+            return "/static/media/file_icons/zip.png"
         elif extension == ".txt":
             return "/static/media/file_icons/txt.png"
         else:
