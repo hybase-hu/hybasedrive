@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.urls import path, include
 
-from user_profile.views import index
+from user_profile.views import index, register
 
 urlpatterns = [
     path('', index,name='index'),
     path('files/', include("user_file.urls")),
+    path('register/',register,name='register')
 ]
 

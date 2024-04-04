@@ -1,0 +1,25 @@
+
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %} LOGIN {% endblock title %}
+{% block content %}
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="card bg-primary-dark text-light" style="max-width:600px;margin:0px auto">
+        <div class="p-3" style="margin:0px auto">
+            <img src="{% static 'media/ico.jpg' %}" alt="" style="max-width:150px;object-fit:cover;">
+        </div>
+        <div class="card-body">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-success w-100 my-3" value="Registration">
+            <p class="text-center small m-0">Already have you account?</p>
+            <p class="text-center small"><a href="{% url 'login' %}" class="link-info">Login</a></p>
+        </div>
+    </div>
+</form>
+
+
+{% endblock content %}

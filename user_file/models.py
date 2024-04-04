@@ -44,5 +44,7 @@ class UploadFile(models.Model):
             return "/static/media/file_icons/music.png"
         elif extension == ".txt":
             return "/static/media/file_icons/txt.png"
+        elif extension == ".mp3":
+            return "/static/media/file_icons/mp3.png"
         else:
             return "/static/media/file_icons/data.png"
