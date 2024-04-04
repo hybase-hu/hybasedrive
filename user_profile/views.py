@@ -40,6 +40,8 @@ def register(request):
             user = form.save(commit=False)
             user.set_password(passw2)
             user.save()
+            messages.success(request,"registration is successfully")
+            return redirect('login')
         else:
             messages.error(request, form.errors)
             return redirect('register')
